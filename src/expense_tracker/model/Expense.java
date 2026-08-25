@@ -58,4 +58,10 @@ public class Expense {
 		return category;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Id: %d\nDescription: %s\nAmount: %.2f\nDate: %s\nCategory: %s\n\n----------\n", id,
+				description, amount, date , category);
+	}
+
 }
