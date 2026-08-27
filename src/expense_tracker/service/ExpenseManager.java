@@ -1,6 +1,7 @@
 package expense_tracker.service;
 
 import java.util.List;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import expense_tracker.model.Expense;
 
@@ -52,6 +53,17 @@ public class ExpenseManager {
 
 		return new ArrayList<>(expenses);
 
+	}
+
+	public BigDecimal getTotalAmount() {
+		BigDecimal total = BigDecimal.ZERO;
+
+		for (Expense e : expenses) {
+			total = total.add(e.getAmount());
+
+		}
+
+		return total;
 	}
 
 }
