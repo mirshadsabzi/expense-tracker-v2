@@ -1,5 +1,6 @@
 package expense_tracker;
 
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,11 +14,15 @@ public class Main {
 		ExpenseManager manager = new ExpenseManager();
 
 		manager.addExpense(
-				new Expense(1, "Ice Cream", new BigDecimal("12.99"), LocalDate.of(2026, 8, 24), Category.FOOD));
+				new Expense(10, "Ice Cream", new BigDecimal("12.99"), LocalDate.of(2026, 8, 24), Category.FOOD));
 		manager.addExpense(
-				new Expense(2, "Taxi Fare", new BigDecimal("19.99"), LocalDate.of(2026, 8, 25), Category.TRANSPORT));
+				new Expense(25, "Taxi Fare", new BigDecimal("19.99"), LocalDate.of(2026, 8, 25), Category.TRANSPORT));
 		manager.addExpense(
-				new Expense(3, "Internet package", new BigDecimal("16.99"), LocalDate.of(2026, 8, 1), Category.BILLS));
+				new Expense(55, "Internet package", new BigDecimal("16.99"), LocalDate.of(2026, 8, 1), Category.BILLS));
+		
+		manager.removeById(25);
+		
+		manager.removeById(999);
 		
 		manager.displayExpenses();
 
