@@ -48,4 +48,10 @@ public class ExpenseManager {
 		return false;
 	}
 
+	public List<Expense> getAllExpenses() {
+
+		return new ArrayList<>(expenses);
+
+	}
+
 }

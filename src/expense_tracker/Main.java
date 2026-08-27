@@ -20,11 +20,13 @@ public class Main {
 		manager.addExpense(
 				new Expense(55, "Internet package", new BigDecimal("16.99"), LocalDate.of(2026, 8, 1), Category.BILLS));
 		
-		manager.removeById(25);
+//		manager.removeById(25);
 		
-		manager.removeById(999);
+//		manager.removeById(999);
 		
-		manager.displayExpenses();
+//		manager.displayExpenses();
+		
+		System.out.println(manager.getAllExpenses());
 
 	}
 }
