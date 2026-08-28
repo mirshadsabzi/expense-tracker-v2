@@ -82,7 +82,7 @@ public class ExpenseManager {
 		if (index == -1) {
 			return false;
 		}
-		
+
 		Expense expense = expenses.get(index);
 
 		expense.setAmount(amount);
@@ -91,6 +91,18 @@ public class ExpenseManager {
 		expense.setCategory(category);
 
 		return true;
+	}
+
+	public List<Expense> findByCategory(Category category) {
+		List<Expense> matchingExpenses = new ArrayList<>();
+
+		for (Expense e : expenses) {
+			if (e.getCategory() == category) {
+				matchingExpenses.add(e);
+			}
+		}
+
+		return matchingExpenses;
 	}
 
 }
