@@ -9,7 +9,7 @@ public class ExpenseManager {
 	private List<Expense> expenses;
 
 	public ExpenseManager() {
-		expenses = new ArrayList<Expense>();
+		expenses = new ArrayList<>();
 	}
 
 	// Add Method
@@ -64,6 +64,13 @@ public class ExpenseManager {
 		}
 
 		return total;
+	}
+
+	public Expense findById(int id) {
+
+		int index = findIndexById(id);
+
+		return index == -1 ? null : expenses.get(index);
 	}
 
 }

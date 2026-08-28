@@ -18,12 +18,9 @@ public class Main {
 				new Expense(25, "Taxi Fare", new BigDecimal("19.99"), LocalDate.of(2026, 8, 25), Category.TRANSPORT));
 		manager.addExpense(
 				new Expense(55, "Internet package", new BigDecimal("16.99"), LocalDate.of(2026, 8, 1), Category.BILLS));
-		
-		System.out.println("Total: " + manager.getTotalAmount());
-		
-		manager.removeById(25);
-		
-		System.out.println("New total: " + manager.getTotalAmount() );
+
+		System.out.println(manager.findById(55));
+		System.out.println(manager.findById(999));
 
 	}
 }
