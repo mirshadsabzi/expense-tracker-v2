@@ -24,9 +24,7 @@ public class Main {
 
 		manager.displayExpenses();
 
-		System.out.println(manager.findByCategory(Category.FOOD));
-		System.out.println(manager.findByCategory(Category.BILLS));
-		System.out.println(manager.findByCategory(Category.OTHERS));
-		
+		System.out.println(manager.sortByAmount());
+
 	}
 }

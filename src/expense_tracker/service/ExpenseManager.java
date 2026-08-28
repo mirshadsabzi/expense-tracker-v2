@@ -4,6 +4,7 @@ import java.util.List;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import expense_tracker.model.Category;
 import expense_tracker.model.Expense;
@@ -103,6 +104,16 @@ public class ExpenseManager {
 		}
 
 		return matchingExpenses;
+	}
+
+	public List<Expense> sortByAmount() {
+
+		List<Expense> sortedExpenses = new ArrayList<>(expenses);
+
+		Collections.sort(sortedExpenses , (e1, e2) -> e1.getAmount().compareTo(e2.getAmount()));
+
+		return sortedExpenses ;
+
 	}
 
 }
