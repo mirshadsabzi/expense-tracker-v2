@@ -22,9 +22,9 @@ public class Main {
 
 		manager.updateExpense(55, "Shoe", new BigDecimal("45.89"), LocalDate.of(2024, 12, 15), Category.OTHERS);
 
-		manager.displayExpenses();
 
-		System.out.println(manager.sortByAmount());
+		
+		System.out.println(manager.sortByDate());
 
 	}
 }

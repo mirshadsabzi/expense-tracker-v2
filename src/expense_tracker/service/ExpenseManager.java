@@ -115,5 +115,16 @@ public class ExpenseManager {
 		return sortedExpenses ;
 
 	}
+	
+	public List<Expense> sortByDate() {
+
+		List<Expense> sortedExpenses = new ArrayList<>(expenses);
+
+		Collections.sort(sortedExpenses , (e1, e2) -> -e1.getDate().compareTo(e2.getDate()));
+
+		return sortedExpenses ;
+
+	}
+
 
 }
