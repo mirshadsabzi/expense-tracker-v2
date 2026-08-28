@@ -19,8 +19,8 @@ public class Main {
 		manager.addExpense(
 				new Expense(55, "Internet package", new BigDecimal("16.99"), LocalDate.of(2026, 8, 1), Category.BILLS));
 
-		System.out.println(manager.findById(55));
-		System.out.println(manager.findById(999));
+		manager.updateExpense(55, "Shoe", new BigDecimal("45.89"), LocalDate.of(2024, 12, 15), Category.OTHERS);
 
+		manager.displayExpenses();
 	}
 }

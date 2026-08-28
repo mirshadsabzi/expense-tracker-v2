@@ -2,7 +2,10 @@ package expense_tracker.service;
 
 import java.util.List;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import expense_tracker.model.Category;
 import expense_tracker.model.Expense;
 
 public class ExpenseManager {
@@ -71,6 +74,23 @@ public class ExpenseManager {
 		int index = findIndexById(id);
 
 		return index == -1 ? null : expenses.get(index);
+	}
+
+	public boolean updateExpense(int id, String description, BigDecimal amount, LocalDate date, Category category) {
+		int index = findIndexById(id);
+
+		if (index == -1) {
+			return false;
+		}
+		
+		Expense expense = expenses.get(index);
+
+		expense.setAmount(amount);
+		expense.setDescription(description);
+		expense.setDate(date);
+		expense.setCategory(category);
+
+		return true;
 	}
 
 }
