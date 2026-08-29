@@ -22,12 +22,11 @@ public class Main {
 
 		
 		
-		System.out.println(manager.findByDateRange(
-			    LocalDate.of(2026, 8, 30),
-			    LocalDate.of(2026, 8, 20)
-			));
+		System.out.println(manager.findByMinAmount( BigDecimal.valueOf(16.99)));
 		
 	}
+	
+	
 	
 	
 	

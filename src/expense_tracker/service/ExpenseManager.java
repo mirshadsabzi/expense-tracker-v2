@@ -163,4 +163,17 @@ public class ExpenseManager {
 		return matchingExpenses;
 	}
 
+	public List<Expense> findByMinAmount(BigDecimal min) {
+
+		List<Expense> matchingExpenses = new ArrayList<>();
+
+		for (Expense e : expenses) {
+			if (e.getAmount().compareTo(min) >= 0) {
+				matchingExpenses.add(e);
+			}
+		}
+
+		return matchingExpenses;
+	}
+
 }
