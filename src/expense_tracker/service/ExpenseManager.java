@@ -139,4 +139,16 @@ public class ExpenseManager {
 		return matchingExpenses;
 	}
 
+	public List<Expense> findByDate(LocalDate date) {
+		List<Expense> matchingExpenses = new ArrayList<>();
+
+		for (Expense e : expenses) {
+			if (e.getDate().equals(date)) {
+				matchingExpenses.add(e);
+			}
+		}
+
+		return matchingExpenses;
+	}
+
 }

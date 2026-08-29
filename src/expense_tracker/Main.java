@@ -22,7 +22,7 @@ public class Main {
 
 		
 		
-		System.out.println(manager.findByMaxAmount(BigDecimal.valueOf(16.99)));
+		System.out.println(manager.findByDate(LocalDate.of(2026, 8, 24)));
 		
 	}
 	
