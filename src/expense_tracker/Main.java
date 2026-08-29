@@ -22,7 +22,7 @@ public class Main {
 
 		
 		
-		System.out.println(manager.findByMinAmount( BigDecimal.valueOf(16.99)));
+		System.out.println(manager.getTotalByCategory(Category.FOOD));
 		
 	}
 	

@@ -60,14 +60,9 @@ public class ExpenseManager {
 	}
 
 	public BigDecimal getTotalAmount() {
-		BigDecimal total = BigDecimal.ZERO;
+		
 
-		for (Expense e : expenses) {
-			total = total.add(e.getAmount());
-
-		}
-
-		return total;
+		return calculateTotal(expenses);
 	}
 
 	public Expense findById(int id) {
@@ -174,6 +169,22 @@ public class ExpenseManager {
 		}
 
 		return matchingExpenses;
+	}
+
+	public BigDecimal getTotalByCategory(Category category) {
+		
+		return calculateTotal(findByCategory(category));
+	}
+	
+	private BigDecimal calculateTotal(List<Expense> expenses) {
+		BigDecimal total = BigDecimal.ZERO;
+
+		for (Expense e : expenses) {
+			total = total.add(e.getAmount());
+
+		}
+
+		return total;
 	}
 
 }
