@@ -151,4 +151,16 @@ public class ExpenseManager {
 		return matchingExpenses;
 	}
 
+	public List<Expense> findByDateRange(LocalDate d1, LocalDate d2) {
+		List<Expense> matchingExpenses = new ArrayList<>();
+
+		for (Expense e : expenses) {
+			if (!e.getDate().isBefore(d1) && !e.getDate().isAfter(d2)) {
+				matchingExpenses.add(e);
+			}
+		}
+
+		return matchingExpenses;
+	}
+
 }

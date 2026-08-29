@@ -22,7 +22,10 @@ public class Main {
 
 		
 		
-		System.out.println(manager.findByDate(LocalDate.of(2026, 8, 24)));
+		System.out.println(manager.findByDateRange(
+			    LocalDate.of(2026, 8, 30),
+			    LocalDate.of(2026, 8, 20)
+			));
 		
 	}
 	
