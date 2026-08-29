@@ -110,21 +110,33 @@ public class ExpenseManager {
 
 		List<Expense> sortedExpenses = new ArrayList<>(expenses);
 
-		Collections.sort(sortedExpenses , (e1, e2) -> e1.getAmount().compareTo(e2.getAmount()));
+		Collections.sort(sortedExpenses, (e1, e2) -> e1.getAmount().compareTo(e2.getAmount()));
 
-		return sortedExpenses ;
+		return sortedExpenses;
 
 	}
-	
+
 	public List<Expense> sortByDate() {
 
 		List<Expense> sortedExpenses = new ArrayList<>(expenses);
 
-		Collections.sort(sortedExpenses , (e1, e2) -> -e1.getDate().compareTo(e2.getDate()));
+		Collections.sort(sortedExpenses, (e1, e2) -> -e1.getDate().compareTo(e2.getDate()));
 
-		return sortedExpenses ;
+		return sortedExpenses;
 
 	}
 
+	public List<Expense> findByMaxAmount(BigDecimal maxAmount) {
+		List<Expense> matchingExpenses = new ArrayList<>();
+
+		for (Expense e : expenses) {
+
+			if (e.getAmount().compareTo(maxAmount) <= 0) {
+				matchingExpenses.add(e);
+			}
+		}
+
+		return matchingExpenses;
+	}
 
 }
