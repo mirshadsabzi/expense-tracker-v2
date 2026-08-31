@@ -17,8 +17,17 @@ public class ExpenseManager {
 	}
 
 	// Add Method
-	public void addExpense(Expense e) {
-		expenses.add(e);
+	public boolean addExpense(Expense e) {
+		int index = findIndexById(e.getId());
+
+		if (index == -1) {
+			expenses.add(e);
+			return true;
+		}
+
+		System.out.println("This id already exist.");
+		return false;
+
 	}
 
 	public void displayExpenses() {
@@ -60,7 +69,6 @@ public class ExpenseManager {
 	}
 
 	public BigDecimal getTotalAmount() {
-		
 
 		return calculateTotal(expenses);
 	}
@@ -172,10 +180,10 @@ public class ExpenseManager {
 	}
 
 	public BigDecimal getTotalByCategory(Category category) {
-		
+
 		return calculateTotal(findByCategory(category));
 	}
-	
+
 	private BigDecimal calculateTotal(List<Expense> expenses) {
 		BigDecimal total = BigDecimal.ZERO;
 
@@ -185,6 +193,12 @@ public class ExpenseManager {
 		}
 
 		return total;
+	}
+
+	public void clear() {
+
+		expenses.clear();
+
 	}
 
 }

@@ -18,6 +18,7 @@ public class Expense {
 		this.category = category;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
