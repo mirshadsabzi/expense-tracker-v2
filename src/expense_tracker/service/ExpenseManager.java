@@ -1,6 +1,7 @@
 package expense_tracker.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,28 +11,17 @@ import expense_tracker.model.Category;
 import expense_tracker.model.Expense;
 
 public class ExpenseManager {
-	private List<Expense> expenses;
+	private final List<Expense> expenses;
 
 	public ExpenseManager() {
 		expenses = new ArrayList<>();
 	}
 
 	// Add Method
-	public boolean addExpense(Expense e) {
-		int index = findIndexById(e.getId());
+	public void addExpense(Expense e) {
 
-		if (index == -1) {
-			expenses.add(e);
-			return true;
-		}
+		expenses.add(e);
 
-		System.out.println("This id already exist.");
-		return false;
-
-	}
-
-	public void displayExpenses() {
-		expenses.forEach(e -> System.out.println(e));
 	}
 
 	// Finding index of expense by id
@@ -56,8 +46,6 @@ public class ExpenseManager {
 			return true;
 
 		}
-
-		System.out.println("There is no expense in the list with id " + id + ".\n");
 
 		return false;
 	}
@@ -98,15 +86,8 @@ public class ExpenseManager {
 	}
 
 	public List<Expense> findByCategory(Category category) {
-		List<Expense> matchingExpenses = new ArrayList<>();
+		return expenses.stream().filter(e -> e.getCategory() == category).collect(Collectors.toList());
 
-		for (Expense e : expenses) {
-			if (e.getCategory() == category) {
-				matchingExpenses.add(e);
-			}
-		}
-
-		return matchingExpenses;
 	}
 
 	public List<Expense> sortByAmount() {
@@ -130,53 +111,25 @@ public class ExpenseManager {
 	}
 
 	public List<Expense> findByMaxAmount(BigDecimal maxAmount) {
-		List<Expense> matchingExpenses = new ArrayList<>();
-
-		for (Expense e : expenses) {
-
-			if (e.getAmount().compareTo(maxAmount) <= 0) {
-				matchingExpenses.add(e);
-			}
-		}
-
-		return matchingExpenses;
+		return expenses.stream().filter(e -> e.getAmount().compareTo(maxAmount) <= 0).collect(Collectors.toList());
 	}
 
 	public List<Expense> findByDate(LocalDate date) {
-		List<Expense> matchingExpenses = new ArrayList<>();
 
-		for (Expense e : expenses) {
-			if (e.getDate().equals(date)) {
-				matchingExpenses.add(e);
-			}
-		}
+		return expenses.stream().filter(e -> e.getDate().equals(date)).collect(Collectors.toList());
 
-		return matchingExpenses;
 	}
 
 	public List<Expense> findByDateRange(LocalDate d1, LocalDate d2) {
-		List<Expense> matchingExpenses = new ArrayList<>();
+		return expenses.stream().filter(e -> !e.getDate().isBefore(d1) && !e.getDate().isAfter(d2))
+				.collect(Collectors.toList());
 
-		for (Expense e : expenses) {
-			if (!e.getDate().isBefore(d1) && !e.getDate().isAfter(d2)) {
-				matchingExpenses.add(e);
-			}
-		}
-
-		return matchingExpenses;
 	}
 
 	public List<Expense> findByMinAmount(BigDecimal min) {
 
-		List<Expense> matchingExpenses = new ArrayList<>();
+		return expenses.stream().filter(e -> e.getAmount().compareTo(min) >= 0).collect(Collectors.toList());
 
-		for (Expense e : expenses) {
-			if (e.getAmount().compareTo(min) >= 0) {
-				matchingExpenses.add(e);
-			}
-		}
-
-		return matchingExpenses;
 	}
 
 	public BigDecimal getTotalByCategory(Category category) {
@@ -185,14 +138,9 @@ public class ExpenseManager {
 	}
 
 	private BigDecimal calculateTotal(List<Expense> expenses) {
-		BigDecimal total = BigDecimal.ZERO;
 
-		for (Expense e : expenses) {
-			total = total.add(e.getAmount());
+		return expenses.stream().map(e -> e.getAmount()).reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
 
-		}
-
-		return total;
 	}
 
 	public void clear() {
